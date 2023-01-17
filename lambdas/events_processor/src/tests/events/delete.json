@@ -1,0 +1,20 @@
+{
+  "Records": [
+      {
+          "messageId": "34d27d1b-5029-4f82-9b20-3fa81e29bf8f",
+          "receiptHandle": "AQEBQcnM/JyD0oE0Po35SGmwjUzoHKRO/Esvtp9yfhLv/bd4MCSbo5o20Rgqoj1ZBa9TSXv50ZEUxOozaU9Pbo652kSY9yFWdgYKGmityGgYh2opzYTVa7yPiSLHqgWDNgdGqOy1gmKAxjQXmH8bwdhwZVrrK3gjLZWIuyVRhm4XboDGHeBxnYj+m6tU4AJvQ4BwBtmT9xUhKufyfPLHUf6UX/qtYHLMOT+bJgIVFda97D0fYlvn5dfTmGmCU4BcGs6ihMm682yXnj73bJi5g4Xa130Lky1r1XPM7WxqQzEwjBHLKkfAad3b260U2Znk9yZ2coyTpnHf0RHWlHBZjpSa6h5mrKttAATbz/MsgBl2rmpdBNR/hRTXuRnhoJ/cWGzTBX2frwGIsgi0QX4yQl8+Yw==",
+          "body": "{\"Records\":[{\"eventVersion\":\"2.0\",\"eventSource\":\"aws:s3\",\"awsRegion\":\"us-east-1\",\"eventTime\":\"1970-01-01T00:00:00.000Z\",\"eventName\":\"ObjectRemoved:Delete\",\"userIdentity\":{\"principalId\":\"EXAMPLE\"},\"requestParameters\":{\"sourceIPAddress\":\"127.0.0.1\"},\"responseElements\":{\"x-amz-request-id\":\"EXAMPLE123456789\",\"x-amz-id-2\":\"EXAMPLE123/5678abcdefghijklambdaisawesome/mnopqrstuvwxyzABCDEFGH\"},\"s3\":{\"s3SchemaVersion\":\"1.0\",\"configurationId\":\"testConfigRule\",\"bucket\":{\"name\":\"demo-bucket\",\"ownerIdentity\":{\"principalId\":\"EXAMPLE\"},\"arn\":\"arn:aws:s3:::demo-bucket\"},\"object\":{\"key\":\"DeleteEvents/demo-deleted-file.txt\",\"size\":1024,\"eTag\":\"0123456789abcdef0123456789abcdef\",\"sequencer\":\"0A1B2C3D4E5F678901\"}}}]}",
+          "attributes": {
+              "ApproximateReceiveCount": "1",
+              "SentTimestamp": "1673823969180",
+              "SenderId": "abc",
+              "ApproximateFirstReceiveTimestamp": "1673823969194"
+          },
+          "messageAttributes": {},
+          "md5OfBody": "abc",
+          "eventSource": "aws:sqs",
+          "eventSourceARN": "abc",
+          "awsRegion": "us-east-1"
+      }
+  ]
+}

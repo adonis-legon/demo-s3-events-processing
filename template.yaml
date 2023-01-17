@@ -1,0 +1,100 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  This project is a demo for how to create a serverless application that can handle specific AWS S3 events
+
+Parameters:
+  StorageBucketName:
+    Type: String
+  StorageBucketEventsQueueName:
+    Type: String
+
+Resources:
+  StorageBucket:
+    Type: AWS::S3::Bucket
+    DependsOn:
+      - StorageBucketEventsQueuePolicy
+    Properties:
+      BucketName: !Ref StorageBucketName
+      LifecycleConfiguration:
+        Rules:
+          - Id: GlacierInstantRetrievalRule
+            Prefix: 'LifecycleTransitionEvents/'
+            Status: Enabled
+            ExpirationInDays: 15
+            Transitions:
+              - TransitionInDays: 1
+                StorageClass: GLACIER_IR
+      NotificationConfiguration:
+        QueueConfigurations:
+          - Event: "s3:ObjectCreated:Put"
+            Queue: !GetAtt StorageBucketEventsQueue.Arn
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: 'PutEvents/'
+          - Event: "s3:ObjectRemoved:Delete"
+            Queue: !GetAtt StorageBucketEventsQueue.Arn
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: 'DeleteEvents/'
+          - Event: "s3:LifecycleTransition"
+            Queue: !GetAtt StorageBucketEventsQueue.Arn
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: 'LifecycleTransitionEvents/'
+
+  StorageBucketEventsQueue:
+    Type: "AWS::SQS::Queue"
+    Properties:
+      QueueName: !Ref StorageBucketEventsQueueName
+
+  StorageBucketEventsQueuePolicy:
+    Type: "AWS::SQS::QueuePolicy"
+    Properties:
+      PolicyDocument:
+        Version: "2012-10-17"
+        Id: StorageBucketEventsQueuePolicy
+        Statement:
+          - Sid: Allow-SendMessage-To-Queue-From-S3-Event-Notification
+            Effect: Allow
+            Principal: 
+              Service: "s3.amazonaws.com"
+            Action:
+              - "sqs:SendMessage"
+            Resource: !GetAtt StorageBucketEventsQueue.Arn
+            Condition:
+              ArnLike:
+                aws:SourceArn: !Join ["",['arn:aws:s3:::',!Ref StorageBucketName]]
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+      Queues:
+        - Ref: StorageBucketEventsQueue
+
+  EventsProcessorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambdas/events_processor/src
+      Handler: app.handler.lambda_handler
+      Runtime: python3.9
+      MemorySize: 128
+      Architectures:
+        - x86_64
+      Events:
+        StorageBucketEventsQueue:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt StorageBucketEventsQueue.Arn
+
+Outputs:
+  StorageBucket:
+    Value: !GetAtt StorageBucket.Arn
+  StorageBucketEventsQueue:
+    Value: !GetAtt StorageBucketEventsQueue.Arn
+  EventsProcessorFunction:
+    Value: !GetAtt EventsProcessorFunction.Arn

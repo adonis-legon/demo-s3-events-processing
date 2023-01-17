@@ -1,0 +1,12 @@
+version = 0.1
+[dev]
+[dev.deploy]
+[dev.deploy.parameters]
+stack_name = "demo-s3-events-processing"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1p0x1yuhfls5c"
+s3_prefix = "demo-s3-events-processing"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "StorageBucketName=\"demo-s3-events-processing\" StorageBucketEventsQueueName=\"demo-s3-events-processing-queue\""
+image_repositories = []
