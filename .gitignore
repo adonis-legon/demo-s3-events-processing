@@ -246,3 +246,4 @@ $RECYCLE.BIN/
 venv
 .vscode
 .aws-sam
+samconfig.toml
