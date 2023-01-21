@@ -10,9 +10,6 @@ def lambda_handler(event, context):
     try:
         events_count = 0
 
-        # TEMPORAL
-        print(event)
-
         for sqs_event_payload in event['Records']:
             sqs_event_payload_body = json.loads(sqs_event_payload['body'])
             for s3_event_payload in sqs_event_payload_body['Records']:
