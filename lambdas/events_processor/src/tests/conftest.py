@@ -16,3 +16,8 @@ def delete_event():
 @pytest.fixture(name="transition_event")
 def transition_event():
     return load_test_event('.', 'transition')
+
+
+@pytest.fixture(name="expiration_event")
+def expiration_event():
+    return load_test_event('.', 'expiration')

@@ -48,6 +48,13 @@ Resources:
                 Rules:
                   - Name: prefix
                     Value: 'LifecycleTransitionEvents/'
+          - Event: "s3:LifecycleExpiration:Delete"
+            Queue: !GetAtt StorageBucketEventsQueue.Arn
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: 'LifecycleTransitionEvents/'
 
   StorageBucketEventsQueue:
     Type: "AWS::SQS::Queue"

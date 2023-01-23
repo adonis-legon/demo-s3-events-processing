@@ -32,3 +32,12 @@ class TransitionEventProcessor(EventProcessor):
 
         print(
             f'Processed Lifecycle Transition event for bucket: {bucket_name}, and key: {object_key}')
+
+
+class ExpirationEventProcessor(EventProcessor):
+    def process(self, event_payload):
+        bucket_name = event_payload['s3']['bucket']['name']
+        object_key = event_payload['s3']['object']['key']
+
+        print(
+            f'Processed Lifecycle Expiration event for bucket: {bucket_name}, and key: {object_key}')

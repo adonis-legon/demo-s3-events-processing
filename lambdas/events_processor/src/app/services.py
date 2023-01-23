@@ -1,4 +1,4 @@
-from .processors import PutEventProcessor, DeleteEventProcessor, TransitionEventProcessor
+from .processors import PutEventProcessor, DeleteEventProcessor, TransitionEventProcessor, ExpirationEventProcessor
 from .exceptions import EventProcessorNotSupportedException
 
 
@@ -9,6 +9,7 @@ class EventProcessorFactory():
             'ObjectCreated:Put': PutEventProcessor(),
             'ObjectRemoved:Delete': DeleteEventProcessor(),
             'LifecycleTransition': TransitionEventProcessor(),
+            'LifecycleExpiration:Delete': ExpirationEventProcessor(),
         }
 
 

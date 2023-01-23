@@ -1,0 +1,20 @@
+{
+  "Records": [
+      {
+          "messageId": "34d27d1b-5029-4f82-9b20-3fa81e29bf8f",
+          "receiptHandle": "AQEBQcnM/JyD0oE0Po35SGmwjUzoHKRO/Esvtp9yfhLv/bd4MCSbo5o20Rgqoj1ZBa9TSXv50ZEUxOozaU9Pbo652kSY9yFWdgYKGmityGgYh2opzYTVa7yPiSLHqgWDNgdGqOy1gmKAxjQXmH8bwdhwZVrrK3gjLZWIuyVRhm4XboDGHeBxnYj+m6tU4AJvQ4BwBtmT9xUhKufyfPLHUf6UX/qtYHLMOT+bJgIVFda97D0fYlvn5dfTmGmCU4BcGs6ihMm682yXnj73bJi5g4Xa130Lky1r1XPM7WxqQzEwjBHLKkfAad3b260U2Znk9yZ2coyTpnHf0RHWlHBZjpSa6h5mrKttAATbz/MsgBl2rmpdBNR/hRTXuRnhoJ/cWGzTBX2frwGIsgi0QX4yQl8+Yw==",
+          "body": "{\"Records\":[{\"eventVersion\":\"2.3\",\"eventSource\":\"aws:s3\",\"awsRegion\":\"us-east-1\",\"eventTime\":\"2023-01-21T07:52:41.257Z\",\"eventName\":\"LifecycleExpiration:Delete\",\"userIdentity\":{\"principalId\":\"s3.amazonaws.com\"},\"requestParameters\":{\"sourceIPAddress\":\"s3.amazonaws.com\"},\"responseElements\":{\"x-amz-request-id\":\"3F2E30F46553DF96\",\"x-amz-id-2\":\"5M8OmqtFmPtbbTnp3N0IUbfJ0uM0nDRx4hFli1RWFUyNIhOIXw/Cw+cIDh5GgELaBoOuQERuathvZfUEjbHtdnIF1nBIXp+m\"},\"s3\":{\"s3SchemaVersion\":\"1.0\",\"configurationId\":\"24fbfc95-8c54-4599-9c7d-761348d5af81\",\"bucket\":{\"name\":\"demo-s3-events-processing\",\"ownerIdentity\":{\"principalId\":\"A38PQMQD349UHI\"},\"arn\":\"arn:aws:s3:::demo-s3-events-processing\"},\"object\":{\"key\":\"LifecycleTransitionEvents/%5BClean+Code+by+Robert+C+Martin%5D.pdf\",\"size\":3383676,\"eTag\":\"49c65a6f36e689461d4ab0ddb497c4d6\"}},\"lifecycleEventData\":{\"transitionEventData\":{\"destinationStorageClass\":\"GLACIER_IR\"}}}]}",
+          "attributes": {
+              "ApproximateReceiveCount": "1",
+              "SentTimestamp": "1673823969180",
+              "SenderId": "abc",
+              "ApproximateFirstReceiveTimestamp": "1673823969194"
+          },
+          "messageAttributes": {},
+          "md5OfBody": "abc",
+          "eventSource": "aws:sqs",
+          "eventSourceARN": "abc",
+          "awsRegion": "us-east-1"
+      }
+  ]
+}
