@@ -38,9 +38,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
       - run: |
           echo 'Running unit tests'
-          cd lambdas/events_processor/src/tests/
+          cd lambdas/events_processor/src
+          pip install -r requirements.txt
+          cd tests
           pytest
 
   delete-feature:
