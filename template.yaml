@@ -22,7 +22,7 @@ Resources:
       LifecycleConfiguration:
         Rules:
           - Id: GlacierInstantRetrievalRule
-            Prefix: 'LifecycleTransitionEvents/'
+            Prefix: 'LifecycleTransitionEvents'
             Status: Enabled
             ExpirationInDays: !Ref StorageExpirationInDays
             Transitions:
